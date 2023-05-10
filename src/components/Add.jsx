@@ -1,5 +1,6 @@
 import { FaArrowLeft } from "react-icons/fa";
 import { Form, Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Add = () => {
 
@@ -38,7 +39,19 @@ const Add = () => {
 
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+
+                console.log(data)
+
+                if (data.insertedId) {
+
+                    Swal.fire(
+                        'Good job!',
+                        'You item successfully saved on Database!!',
+                        'success'
+                      )
+                }
+            })
     };
     const handleTypeChange = (e) => {
         const selectedType = e.target.value;

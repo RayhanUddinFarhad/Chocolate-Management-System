@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import ChoclateTable from './components/ChoclateTable.jsx';
 import Add from './components/Add.jsx';
+import Update from './components/Update.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,12 @@ const router = createBrowserRouter([
 
         path : "/add",
         element : <Add></Add>
+      },
+
+      {
+        path : "/Update/:id",
+        element : <Update></Update>,
+        loader : ({params}) => fetch (`http://localhost:5000/chocolate/${params.id}`)
       }
     ]
   },
